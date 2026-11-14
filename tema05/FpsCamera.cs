@@ -64,14 +64,19 @@ public class FpsCamera : Camera
         //               Atenție: pe ecran Y crește în jos, iar pitch pozitiv înseamnă privire în sus.
         //               Apoi limitați pitch-ul la intervalul [-MaxPitch, MaxPitch].
 
-
+        Yaw += mouseDelta.X * MouseSensitivity;
+        Pitch -= mouseDelta.Y * MouseSensitivity;
+        Pitch = Math.Clamp(Pitch, -MaxPitch, MaxPitch);
         UpdateVectors();
 
         // --- 2. FOV: rotița mouse-ului --------------------------------------------
 
         // TODO 5.1 (c): rotița în sus (ScrollDelta.Y > 0) micșorează FOV-ul (efect de zoom)
         //               (folosiți ChangeFov din clasa Camera și FovStep)
-
+        if (mouse.ScrollDelta.Y != 0)
+        {
+            ChangeFov(-mouse.ScrollDelta.Y * 2.0f); // sau sensibilitatea definită în clasă
+        }
 
         // --- 3. Deplasarea: W A S D ---------------------------------------------------
 
@@ -93,9 +98,17 @@ public class FpsCamera : Camera
         // TODO 5.5 (b): Front din yaw și pitch (formula din secțiunea 5.2), apoi Right și Up
         //               prin produse vectoriale; toți trei normalizați.
         //               Până atunci camera privește mereu spre -Z.
-        _front = -Vector3.UnitZ;
-        _right = Vector3.UnitX;
-        _up = Vector3.UnitY;
+        float yawRad = MathHelper.DegreesToRadians(Yaw);
+        float pitchRad = MathHelper.DegreesToRadians(Pitch);
+
+        Vector3 front;
+        front.X = MathF.Cos(pitchRad) * MathF.Cos(yawRad);
+        front.Y = MathF.Sin(pitchRad);
+        front.Z = MathF.Cos(pitchRad) * MathF.Sin(yawRad);
+
+        _front = Vector3.Normalize(front);
+        _right = Vector3.Normalize(Vector3.Cross(_front, Vector3.UnitY));
+        _up = Vector3.Normalize(Vector3.Cross(_right, _front));
     }
 
     public override void Reset()

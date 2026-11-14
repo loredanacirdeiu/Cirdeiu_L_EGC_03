@@ -127,7 +127,24 @@ public static class Shapes
 
         // TODO 5.3: fețele 2..5. Pentru fiecare față, imaginați-vă că o priviți din afara cubului
         //           și stabiliți direcțiile "dreapta" și "sus" (ca în comentariile de mai sus).
+        AddFace(vertices, indices, 2,
+                new Vector3(h, -h, -h), new Vector3(-h, -h, -h), new Vector3(-h, h, -h), new Vector3(h, h, -h),
+                new Color4(1.0f, 0.9f, 0.2f, 1.0f));
 
+        // Fața 3: -X (stânga - cyan). Privită din -X: dreapta = +Z, sus = +Y.
+        AddFace(vertices, indices, 3,
+                new Vector3(-h, -h, -h), new Vector3(-h, -h, h), new Vector3(-h, h, h), new Vector3(-h, h, -h),
+                new Color4(0.2f, 0.9f, 1.0f, 1.0f));
+
+        // Fața 4: +Y (sus - verde). Privită din +Y: dreapta = +X, sus = -Z.
+        AddFace(vertices, indices, 4,
+                new Vector3(-h, h, h), new Vector3(h, h, h), new Vector3(h, h, -h), new Vector3(-h, h, -h),
+                new Color4(0.2f, 0.9f, 0.3f, 1.0f));
+
+        // Fața 5: -Y (jos - magenta). Privită din -Y: dreapta = +X, sus = +Z.
+        AddFace(vertices, indices, 5,
+                new Vector3(-h, -h, -h), new Vector3(h, -h, -h), new Vector3(h, -h, h), new Vector3(-h, -h, h),
+                new Color4(1.0f, 0.2f, 0.9f, 1.0f));
         return new Mesh(vertices, indices);
     }
 
@@ -157,9 +174,10 @@ public static class Shapes
                 float longitude = u * 2.0f * MathF.PI;            // 0° .. 360°
 
                 // TODO 5.4 (a): poziția vârfului (coordonate sferice -> carteziene, secțiunea 2.2)
-                float x = 0.0f;
-                float y = 0.0f;
-                float z = 0.0f;
+                float cosLat = MathF.Cos(latitude);
+                float x = radius * cosLat * MathF.Cos(longitude);
+                float y = radius * MathF.Sin(latitude);
+                float z = radius * cosLat * MathF.Sin(longitude);
 
                 SetVertex(vertices, i * columns + j, x, y, z, u, v, 0.35f);
             }
@@ -178,6 +196,13 @@ public static class Shapes
 
                 // TODO 5.4 (b): cele două triunghiuri ale celulei, în sens trigonometric privite din afară
                 //               (6 indici: indices[k++] = ...)
+                indices[k++] = bottomLeft;
+                indices[k++] = bottomRight;
+                indices[k++] = topRight;
+
+                indices[k++] = topRight;
+                indices[k++] = topLeft;
+                indices[k++] = bottomLeft;
             }
         }
 
