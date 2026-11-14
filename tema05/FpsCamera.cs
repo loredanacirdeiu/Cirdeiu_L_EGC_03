@@ -85,7 +85,28 @@ public class FpsCamera : Camera
         //           Pași: (1) forward; (2) vectorul "move" = suma direcțiilor tastelor apăsate
         //           (W +forward, S -forward, D +_right, A -_right); (3) normalizați "move";
         //           (4) _position += move * viteză * dt (viteza crește de SprintFactor ori cu Shift stânga).
+        Vector3 forward = FreeFly
+                    ? _front
+                    : Vector3.Normalize(new Vector3(_front.X, 0.0f, _front.Z));
 
+        Vector3 move = Vector3.Zero;
+        if (keyboard.IsKeyDown(Keys.W)) move += forward;
+        if (keyboard.IsKeyDown(Keys.S)) move -= forward;
+        if (keyboard.IsKeyDown(Keys.D)) move += _right;
+        if (keyboard.IsKeyDown(Keys.A)) move -= _right;
+
+        if (FreeFly)
+        {
+            if (keyboard.IsKeyDown(Keys.Space)) move += WorldUp;
+            if (keyboard.IsKeyDown(Keys.LeftControl)) move -= WorldUp;
+        }
+
+        if (move != Vector3.Zero)
+        {
+            move = Vector3.Normalize(move);
+            float speed = MoveSpeed * (keyboard.IsKeyDown(Keys.LeftShift) ? SprintFactor : 1.0f);
+            _position += move * speed * dt;
+        }
         // TODO 5.7 (facultativ): în zbor liber (FreeFly), "forward" este chiar _front,
         //           iar Space urcă și Ctrl stânga coboară (pe axa Y a lumii, WorldUp).
     }
@@ -120,6 +141,22 @@ public class FpsCamera : Camera
         UpdateVectors();
     }
 
+    /// <summary>
+    /// Bonus 1 (Orbită -> FPS): așază camera FPS într-o poziție dată, privind pe o direcție dată,
+    /// recalculând Yaw și Pitch din vectorul de direcție.
+    /// </summary>
+    public void SetPose(Vector3 position, Vector3 front)
+    {
+        _position = position;
+        Vector3 f = Vector3.Normalize(front);
+
+        float pitchRad = MathF.Asin(Math.Clamp(f.Y, -1.0f, 1.0f));
+        float yawRad = MathF.Atan2(f.Z, f.X);
+
+        Pitch = Math.Clamp(MathHelper.RadiansToDegrees(pitchRad), -MaxPitch, MaxPitch);
+        Yaw = MathHelper.RadiansToDegrees(yawRad);
+        UpdateVectors();
+    }
     public override IEnumerable<string> Describe()
     {
         yield return $"Poziție        : ({_position.X,6:F2}, {_position.Y,6:F2}, {_position.Z,6:F2})";
