@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Loredana\\source\\repos\\Cirdeiu_L_EGC_03\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41BB345C-F830-0564-7034-9D2AF24013D3}|tema6.csproj|c:\\users\\loredana\\source\\repos\\cirdeiu_l_egc_03\\sceneobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41BB345C-F830-0564-7034-9D2AF24013D3}|tema6.csproj|solutionrelative:sceneobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41BB345C-F830-0564-7034-9D2AF24013D3}|tema6.csproj|c:\\users\\loredana\\source\\repos\\cirdeiu_l_egc_03\\transform3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41BB345C-F830-0564-7034-9D2AF24013D3}|tema6.csproj|solutionrelative:transform3d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41BB345C-F830-0564-7034-9D2AF24013D3}|tema6.csproj|c:\\users\\loredana\\source\\repos\\cirdeiu_l_egc_03\\input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41BB345C-F830-0564-7034-9D2AF24013D3}|tema6.csproj|solutionrelative:input.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SceneObject.cs",
+              "DocumentMoniker": "C:\\Users\\Loredana\\source\\repos\\Cirdeiu_L_EGC_03\\SceneObject.cs",
+              "RelativeDocumentMoniker": "SceneObject.cs",
+              "ToolTip": "C:\\Users\\Loredana\\source\\repos\\Cirdeiu_L_EGC_03\\SceneObject.cs",
+              "RelativeToolTip": "SceneObject.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowCMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-19T16:04:44.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Transform3D.cs",
+              "DocumentMoniker": "C:\\Users\\Loredana\\source\\repos\\Cirdeiu_L_EGC_03\\Transform3D.cs",
+              "RelativeDocumentMoniker": "Transform3D.cs",
+              "ToolTip": "C:\\Users\\Loredana\\source\\repos\\Cirdeiu_L_EGC_03\\Transform3D.cs",
+              "RelativeToolTip": "Transform3D.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAgwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-19T16:03:46.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Input.cs",
+              "DocumentMoniker": "C:\\Users\\Loredana\\source\\repos\\Cirdeiu_L_EGC_03\\Input.cs",
+              "RelativeDocumentMoniker": "Input.cs",
+              "ToolTip": "C:\\Users\\Loredana\\source\\repos\\Cirdeiu_L_EGC_03\\Input.cs",
+              "RelativeToolTip": "Input.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-19T15:59:27.685Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
